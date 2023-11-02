@@ -63,7 +63,10 @@
                                 <a href="{{route('admin.order-detail', ['id' => $order->id])}}" class="btn btn-info btn-sm" title="Order Detail Info">
                                     <i class="fa fa-info-circle"></i>
                                 </a>
-                                <a href="{{route('admin.order-edit', ['id' => $order->id])}}" class="btn btn-success btn-sm" title="Order Edit">
+
+                                <a href="{{ route('admin.order-edit', ['id' => $order->id]) }}"
+                                   class="btn btn-success btn-sm {{ $order->order_status == "complete" ? 'disabled' : '' }}"
+                                   title="Order Edit">
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <a href="{{route('admin.order-invoice', ['id' => $order->id])}}" class="btn btn-primary btn-sm" title="Order Invoice">
@@ -72,7 +75,10 @@
                                 <a href="{{route('admin.download-order-invoice', ['id' => $order->id])}}" target="_blank" class="btn btn-warning btn-sm" title="Print Invoice">
                                     <i class="fa fa-print"></i>
                                 </a>
-                                <a href="{{route('admin.order-delete', ['id' => $order->id])}}" onclick="return confirm('Are you sure to delete this.')" class="btn btn-danger btn-sm" title="Order Delete">
+                                <a href="{{ route('admin.order-delete', ['id' => $order->id]) }}"
+                                   class="btn btn-danger btn-sm {{ $order->order_status == "cancel" ? 'btn btn-danger btn-sm' : 'disabled btn btn-danger btn-sm' }}"
+                                   onclick="{{ $order->order_status == "cancel" ? 'return confirm("Are you sure to delete this;': 'return false;' }}"
+                                   title="Order Delete">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>

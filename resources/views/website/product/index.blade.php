@@ -26,12 +26,12 @@
 
                 <div class="col-lg-6">
                     <div class="product-details-gallery">
-                        <div class="row g-3">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <div class="nav flex-sm-column flex-row nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     @foreach ($product->otherImages->take(3) as $key => $otherImage)
                                         <button class="nav-link{{ $key === 0 ? ' active' : '' }} mb-30" id="v-pills-img{{ $key + 1 }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-img{{ $key + 1 }}" type="button" role="tab" aria-controls="v-pills-img{{ $key + 1 }}" aria-selected="{{ $key === 0 ? 'true' : 'false' }}">
-                                            <img src="{{ asset($key === 0 ? $product->image : $otherImage->image) }}" alt>
+                                            <img class="xzoom-gallery" src="{{ asset($key === 0 ? $product->image : $otherImage->image) }}" alt xpreview="{{ asset($key === 0 ? $product->image : $otherImage->image) }}">
                                         </button>
                                     @endforeach
                                 </div>
@@ -42,7 +42,7 @@
                                     @foreach ($product->otherImages->take(3) as $key => $otherImage)
                                         <div class="tab-pane fade{{ $key === 0 ? ' show active' : '' }}" id="v-pills-img{{ $key + 1 }}" role="tabpanel" aria-labelledby="v-pills-img{{ $key + 1 }}-tab">
                                             <div class="gallery-big-image">
-                                                <img src="{{ asset($key === 0 ? $product->image : $otherImage->image) }}" alt>
+                                                <img class="xzoom" id="xzoom-default" src="{{ asset($key === 0 ? $product->image : $otherImage->image) }}" alt xoriginal="{{ asset($key === 0 ? $product->image : $otherImage->image) }}">
                                             </div>
                                         </div>
                                     @endforeach
@@ -51,48 +51,48 @@
                         </div>
                     </div>
                 </div>
+                    <div class="col-lg-6">
+                        <div class="prod-details-content">
+                            <ul class="product-review2 d-flex flex-row align-items-center mb-25">
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><a href="#" class="review-no"></a>(32 Review)</li>
+                            </ul>
+                            <h3 class="eg-title1 mb-25">{{$product->name}}</h3>
+                            <h4 class="price-title border--bottom2 mb-15">{{$product->selling_price}}</h4>
+                            <p class="para2 mb-15">{{$product->short_description}}.</p>
 
-                <div class="col-lg-6">
-                    <div class="prod-details-content">
-                        <ul class="product-review2 d-flex flex-row align-items-center mb-25">
-                            <li><i class="bi bi-star-fill"></i></li>
-                            <li><i class="bi bi-star-fill"></i></li>
-                            <li><i class="bi bi-star-fill"></i></li>
-                            <li><i class="bi bi-star-fill"></i></li>
-                            <li><i class="bi bi-star-fill"></i></li>
-                            <li><a href="#" class="review-no"></a>(32 Review)</li>
-                        </ul>
-                        <h3 class="eg-title1 mb-25">{{$product->name}}</h3>
-                        <h4 class="price-title border--bottom2 mb-15">{{$product->selling_price}}</h4>
-                        <p class="para2 mb-15">{{$product->short_description}}.</p>
-
-                        <form action="{{route('cart.add', ['id' => $product->id])}}" method="POST">
-                            @csrf
-                        <div class="prod-quantity d-flex align-items-center justify-content-start mb-20">
-                            <div class="quantity">
-                                <input type="number" min="1" max="90" value="1" name="qty">
-                                <div class="quantity-nav">
-                                    <div class="quantity-button quantity-up">
-                                        <i class="bi bi-plus"></i>
-                                    </div>
-                                    <div class="quantity-button quantity-down">
-                                        <i class="bi bi-dash"></i>
+                            <form action="{{route('cart.add', ['id' => $product->id])}}" method="POST">
+                                @csrf
+                            <div class="prod-quantity d-flex align-items-center justify-content-start mb-20">
+                                <div class="quantity">
+                                    <input type="number" min="1" max="90" value="1" name="qty">
+                                    <div class="quantity-nav">
+                                        <div class="quantity-button quantity-up">
+                                            <i class="bi bi-plus"></i>
+                                        </div>
+                                        <div class="quantity-button quantity-down">
+                                            <i class="bi bi-dash"></i>
+                                        </div>
                                     </div>
                                 </div>
+                                <button type="submit" class="eg-btn md--btn primary--btn">Add to cart</button>
                             </div>
-                            <button type="submit" class="eg-btn md--btn primary--btn">Add to cart</button>
+                            </form>
+
+                            <ul class="prod-info">
+                                <li><span>Category:</span>{{$product->category->name}}</li>
+                                <li><span>Product Brand:</span>{{$product->brand->name}}</li>
+                                <li><span>MFG:</span>{{$product->updated_at}}</li>
+                                <li><span>Life:</span>05 Days</li>
+
+                            </ul>
                         </div>
-                        </form>
-
-                        <ul class="prod-info">
-                            <li><span>Category:</span>{{$product->category->name}}</li>
-                            <li><span>Product Brand:</span>{{$product->brand->name}}</li>
-                            <li><span>MFG:</span>{{$product->updated_at}}</li>
-                            <li><span>Life:</span>05 Days</li>
-
-                        </ul>
                     </div>
-                </div>
+                 </div>
             </div>
         </div>
     </section>

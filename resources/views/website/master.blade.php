@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="{{asset('/')}}website/assets/sass/style.css">
 
+    <link rel="stylesheet" href="{{asset('/')}}website/assets/css/xzoom.css" media="all">
+
 
     <style>
         /* Change the link color to orange on hover */
@@ -418,7 +420,9 @@
 </footer>
 
 
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{asset('/')}}website/assets/js/jquery-3.6.0.min.js"></script>
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{{asset('/')}}website/assets/js/jquery-3.6.0.min.js"></script>
 <script src="{{asset('/')}}website/assets/js/bootstrap.bundle.min.js"></script>
 
 <script src="{{asset('/')}}website/assets/js/slick.js"></script>
@@ -434,7 +438,14 @@
 
 <script src="{{asset('/')}}website/assets/js/main.js"></script>
 
-
+<!-- xzoom plugin here -->
+<script src="{{asset('/')}}website/assets/js/jquery.js"></script>
+<script src="{{asset('/')}}website/assets/js/xzoom.min.js"></script>
+<script src="{{asset('/')}}website/assets/js/setup.js"></script>
+<script>
+    /* calling script */
+    $(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
+</script>
 </body>
 
 

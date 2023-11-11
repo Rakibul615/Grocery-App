@@ -31,6 +31,9 @@ use App\Http\Controllers\SslCommerzPaymentController;
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/product-category/{id}', [WebsiteController::class, 'categoryProduct'])->name('product-category');
 Route::get('/product-detail/{id}', [WebsiteController::class, 'productDetail'])->name('product-detail');
+Route::get('/shop', [WebsiteController::class, 'shop'])->name('product-shop');
+Route::get('/contact-us', [WebsiteController::class, 'contact'])->name('contact');
+Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 
 // website controller end
 
@@ -54,11 +57,13 @@ Route::middleware('customer')->group(function (){
     Route::get('/customer-dashboard', [CustomerProfileController::class, 'index'])->name('customer.dashboard');
     Route::get('/customer-summary', [CustomerProfileController::class, 'summary'])->name('customer.summary');
     Route::get('/customer-profile', [CustomerProfileController::class, 'profile'])->name('customer.profile');
+    Route::post('/customer-profile-update/{id}', [CustomerProfileController::class, 'profileUpdate'])->name('customer.profile-update');
     Route::get('/customer-order', [CustomerProfileController::class, 'order'])->name('customer.order');
     Route::get('/customer-payment-history', [CustomerProfileController::class, 'paymentHistory'])->name('customer.payment-history');
     Route::get('/customer-shipping-address', [CustomerProfileController::class, 'shippingAddress'])->name('customer.shipping-address');
     Route::get('/customer-order-detail/{id}', [CustomerProfileController::class, 'orderDetail'])->name('customer.order-detail');
     Route::get('/customer-password-reset', [CustomerProfileController::class, 'passwordReset'])->name('customer.password-reset');
+    Route::post('/customer-password-update/{id}', [CustomerProfileController::class, 'passwordUpdate'])->name('customer.password-update');
 });
 
 

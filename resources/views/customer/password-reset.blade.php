@@ -42,11 +42,11 @@
                         <div class="col-md-6 mx-auto">
                             <div class="form-wrap box--shadow">
                                 <!-- Add your password reset form here -->
-                                <form action="#" method="POST">
+                                <form action="{{route('customer.password-update', ['id' => $loginCustomer->id])}}" method="POST">
                                     @csrf
                                     <div class="form-inner">
                                         <label>Email Address</label>
-                                        <input type="text" name="email_or_mobile" value="{{$loginCustomer->email}}" placeholder="Your Email Address or Mobile Number">
+                                        <input type="text" name="email" value="{{$loginCustomer->email}}" placeholder="Your Email Address or Mobile Number">
                                     </div>
                                     <div class="form-inner">
                                         <label>New Password</label>

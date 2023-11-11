@@ -34,6 +34,9 @@
                 </div>
 
                 <div class="col-lg-9">
+                    <p class="text-center text-success">{{session('message')}}</p>
+                    <p class="text-center text-success">{{session('error')}}</p>
+
                     <div class=" card card-body" >
                         <h5 class="card-title mb-3">My Profile</h5>
 
@@ -42,7 +45,7 @@
                                     <div class="row g-3 align-items-center">
                                         <div class="col-md-2">
                                             <div class="profile-img">
-                                                <img src="{{asset('/')}}website/assets/images/bg/profile-img.jpg" alt>
+                                                <img src="{{asset($singleCustomer->image)}}" alt>
                                                 <div class="img-upload-icon">
                                                     <i class="las la-camera"></i>
                                                 </div>
@@ -58,7 +61,8 @@
                                 </div>
                                 <div class="profile-body">
                                     <div class="form-wrap p-0">
-                                        <form>
+                                        <form action="{{route('customer.profile-update', ['id' => $singleCustomer->id])}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-inner">
@@ -67,6 +71,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
+
                                                     <div class="form-inner">
                                                         <label>Email *</label>
                                                         <input type="email" name="email" value="{{$singleCustomer->email}}" placeholder="Your email">
@@ -76,6 +81,12 @@
                                                     <div class="form-inner">
                                                         <label>Contact Number *</label>
                                                         <input type="text"  value="{{$singleCustomer->mobile}}"name="mobile">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-inner">
+                                                        <label>Profile Image</label>
+                                                        <input type="file"  value=" "name="image">
                                                     </div>
                                                 </div>
 
@@ -88,6 +99,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

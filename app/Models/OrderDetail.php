@@ -10,10 +10,23 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
-    private static $orderDetail;
+    private static $orderDetails;
     public static function getOrderDetail($id)
     {
-        self::$orderDetail = OrderDetail::where('order_id', $id)->get();
-        return self::$orderDetail;
+        self::$orderDetails = OrderDetail::where('order_id', $id)->get();
+        return self::$orderDetails;
+    }
+    public static function deleteOrderDetail($id)
+    {
+        self::$orderDetails = OrderDetail::where('order_id', $id)->get();
+        if(self::$orderDetails)
+        {
+            foreach (self::$orderDetails as $orderDetail)
+            {
+                $orderDetail->delete();
+            }
+        }
+
+
     }
 }

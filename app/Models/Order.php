@@ -32,6 +32,15 @@ class Order extends Model
         return self::$orders ;
 
     }
+    public static function deleteOrder($id)
+    {
+        self::$order = Order::find($id);
+        if (self::$order) {
+
+            self::$order->delete();
+
+        }
+    }
 
     public static function updateOrderInfo($request, $id)
     {

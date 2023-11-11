@@ -6,10 +6,11 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Session;
 
 class CustomerProfileController extends Controller
 {
-    private $order,$orders, $paymentInfo,$shippingInfo;
+    private $order,$orders, $paymentInfo,$shippingInfo, $singleCustomer;
     public function index()
     {
         $this->customerInfo = Customer::getCustomerInfo();
@@ -21,8 +22,19 @@ class CustomerProfileController extends Controller
     }
     public function profile()
     {
-        $this->customerInfo = Customer::getCustomerInfo();
+         $this->customerInfo = Customer::getCustomerInfo();
         return view('customer.profile', ['singleCustomer' => $this->customerInfo]);
+    }
+    public function profileUpdate(Request $request , $id)
+    {
+//        return $request;
+        $this->singleCustomer = Customer::profileUpdate($request, $id);
+
+        Session::put('customer_id',  $this->singleCustomer->id);
+        Session::put('customer_name',  $this->singleCustomer->name);
+
+        return redirect()->back()->with('message', 'Profile info update successfully');
+
     }
     public function order()
     {
@@ -51,5 +63,12 @@ class CustomerProfileController extends Controller
     {
         $this->customerInfo = Customer::getCustomerInfo();
         return view('customer.password-reset', ['loginCustomer' => $this->customerInfo]);
+    }
+    public function passwordUpdate(Request $request, $id)
+    {
+
+        Customer::passwordUpdate($request, $id);
+        return redirect('/customer-dashboard');
+
     }
 }

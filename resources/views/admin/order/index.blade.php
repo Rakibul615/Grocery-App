@@ -77,7 +77,7 @@
                                 </a>
                                 <a href="{{ route('admin.order-delete', ['id' => $order->id]) }}"
                                    class="btn btn-danger btn-sm {{ $order->order_status == "cancel" ? 'btn btn-danger btn-sm' : 'disabled btn btn-danger btn-sm' }}"
-                                   onclick="{{ $order->order_status == "cancel" ? 'return confirm("Are you sure to delete this;': 'return false;' }}"
+                                   onclick="return confirm('Are you sure to delete this order')"
                                    title="Order Delete">
                                     <i class="fa fa-trash"></i>
                                 </a>

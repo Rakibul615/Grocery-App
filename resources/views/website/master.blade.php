@@ -225,38 +225,19 @@
                 </div>
                 <nav class="main-nav d-none d-lg-block">
                     <ul class="d-flex align-items-center ">
-                        <li class="menu-item"><a href="#" class="menu-link">Home<i class="las la-angle-down dd-icon"></i></a>
-                            <ul class="submenu-home1">
-                                <li><a href="index-2.html">Home 1</a></li>
-                                <li><a href="home2.html">Home 2</a></li>
-                            </ul>
+                        <li class="menu-item"><a href="{{route('home')}}" class="menu-link">Home</a>
+
                         </li>
-                        <li class="menu-item"><a href="#" class="menu-link">Shop<i class="las la-angle-down dd-icon"></i></a>
-                            <ul class="submenu-home1">
-                                <li><a href="product-details.html">Product</a></li>
-                                <li><a href="product-details.html">Product Details</a></li>
-                                <li><a href="product-sidebar.html">Product Sidebar</a></li>
-                            </ul>
+                        <li class="menu-item"><a href="{{route('product-shop')}}" class="menu-link">Shop</a>
+
                         </li>
-                        <li class="menu-item"><a href="#" class="menu-link">Pages<i class="las la-angle-down dd-icon"></i></a>
-                            <ul class="submenu-home1">
-                                <li><a href="about.html">about</a></li>
-                                <li><a href="cart.html">cart</a></li>
-                                <li><a href="Checkout-2.html">Checkout</a></li>
-                                <li><a href="account.html">my account</a></li>
-                                <li><a href="login.html">login Register</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="error.html">error</a></li>
-                            </ul>
+                        <li class="menu-item"><a href="{{'blog'}}" class="menu-link">Pages</a>
+
                         </li>
-                        <li class="menu-item"><a href="#" class="menu-link">Blogs<i class="las la-angle-down dd-icon"></i></a>
-                            <ul class="submenu-home1">
-                                <li><a href="blog-grid.html">blog grid</a></li>
-                                <li><a href="blog-standard.html">blog standard</a></li>
-                                <li><a href="blog-details.html">blog details</a></li>
-                            </ul>
+                        <li class="menu-item"><a href="{{'blog'}}" class="menu-link">Blogs</a>
+
                         </li>
-                        <li class="menu-item"><a href="contact.html" class="menu-link">Contact</a></li>
+                        <li class="menu-item"><a href="{{route('contact')}}" class="menu-link">Contact</a></li>
                     </ul>
                 </nav>
             </div>

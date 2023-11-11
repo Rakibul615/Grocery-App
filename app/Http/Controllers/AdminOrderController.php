@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -44,11 +45,17 @@ class AdminOrderController extends Controller
     public function delete($id)
     {
         $this->order = Order::find($id);
+        OrderDetail::deleteOrderDetail($id);
         if(!$this->order)
         {
             return redirect('/admin/all-order');
         }
         $this->order->delete();
+        if ($this->orderDetail)
+        {
+
+            $this->orderDetail->delete();
+        }
         return redirect()->route('admin.all-order')->with('message', 'Order delete successfully');
 
     }
